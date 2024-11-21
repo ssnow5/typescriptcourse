@@ -34,6 +34,10 @@ type Numeric = number | boolean;
 
 type Universal = Combinable & Numeric;
 
+function add(a: number, b: number): number;
+function add(a: string, b: string): string;
+function add(a: string, b: number): string;
+function add(a: number, b: string): string;
 function add(a: Combinable, b: Combinable) {
   if (typeof a === "string" || typeof b === "string") {
     return a.toString() + b.toString();
@@ -42,82 +46,120 @@ function add(a: Combinable, b: Combinable) {
   return a + b;
 }
 
-type UnknownEmployee = Employee | Admin;
+const result = add("max", " david");
+result.split(" ");
 
-function printEmployeeInformation(emp: UnknownEmployee) {
-  console.log("Name: " + emp.name);
+const fetchUserData = {
+  id: "u1",
+  name: "max",
+  job: { title: "CEO", description: "My Own Company" },
+};
 
-  if ("privileges" in emp) {
-    console.log("Privileges: " + emp.privileges);
-  }
+console.log(fetchUserData?.job?.title);
 
-  if ("startDate" in emp) {
-    console.log("Start Date:" + emp.startDate);
-  }
-}
+const userInput = null;
 
-//printEmployeeInformation(e1);
-printEmployeeInformation({ name: "Manu", startDate: new Date() });
+const storedData = userInput ?? "DEFAULT";
 
-class Car {
-  drive() {
-    console.log("Driving...");
-  }
-}
+console.log(storedData);
 
-class Truck {
-  drive() {
-    console.log("Driving a truck...");
-  }
+// type UnknownEmployee = Employee | Admin;
 
-  loadCargo(amount: number) {
-    console.log("Loading cargo ..." + amount);
-  }
-}
+// function printEmployeeInformation(emp: UnknownEmployee) {
+//   console.log("Name: " + emp.name);
 
-type Vehicle = Car | Truck;
+//   if ("privileges" in emp) {
+//     console.log("Privileges: " + emp.privileges);
+//   }
 
-const v1 = new Car();
-const v2 = new Truck();
+//   if ("startDate" in emp) {
+//     console.log("Start Date:" + emp.startDate);
+//   }
+// }
 
-function useVehicle(vehicle: Vehicle) {
-  vehicle.drive();
+// //printEmployeeInformation(e1);
+// printEmployeeInformation({ name: "Manu", startDate: new Date() });
 
-  //   if ("loadCargo" in vehicle) {
-  //     vehicle.loadCargo(1000);
-  //   }
+// class Car {
+//   drive() {
+//     console.log("Driving...");
+//   }
+// }
 
-  if (vehicle instanceof Truck) {
-    vehicle.loadCargo(1000);
-  }
-}
+// class Truck {
+//   drive() {
+//     console.log("Driving a truck...");
+//   }
 
-useVehicle(v1);
-useVehicle(v2);
+//   loadCargo(amount: number) {
+//     console.log("Loading cargo ..." + amount);
+//   }
+// }
 
-interface Bird {
-  type: "bird";
-  flyingSpeed: number;
-}
+// type Vehicle = Car | Truck;
 
-interface Horse {
-  type: "horse";
-  runningSpeed: number;
-}
+// const v1 = new Car();
+// const v2 = new Truck();
 
-type Animal = Bird | Horse;
+// function useVehicle(vehicle: Vehicle) {
+//   vehicle.drive();
 
-function moveAnimal(animal: Animal) {
-  let speed;
-  switch (animal.type) {
-    case "bird":
-      speed = animal.flyingSpeed;
-      break;
-    case "horse":
-      speed = animal.runningSpeed;
-  }
+//   //   if ("loadCargo" in vehicle) {
+//   //     vehicle.loadCargo(1000);
+//   //   }
 
-  console.log("Moving at speed: " + speed);
-}
+//   if (vehicle instanceof Truck) {
+//     vehicle.loadCargo(1000);
+//   }
+// }
 
-moveAnimal({ type: "bird", flyingSpeed: 30 });
+// useVehicle(v1);
+// useVehicle(v2);
+
+// interface Bird {
+//   type: "bird";
+//   flyingSpeed: number;
+// }
+
+// interface Horse {
+//   type: "horse";
+//   runningSpeed: number;
+// }
+
+// type Animal = Bird | Horse;
+
+// function moveAnimal(animal: Animal) {
+//   let speed;
+//   switch (animal.type) {
+//     case "bird":
+//       speed = animal.flyingSpeed;
+//       break;
+//     case "horse":
+//       speed = animal.runningSpeed;
+//   }
+
+//   console.log("Moving at speed: " + speed);
+// }
+
+// moveAnimal({ type: "bird", flyingSpeed: 30 });
+
+// //const paragraph = document.querySelector("p");
+// //const paragraph = document.getElementById("message_output");
+// // const userInputEl = document.getElementById("user-input")! as HTMLInputElement;
+
+// // userInputEl.value = "Hi there!";
+
+// const userInputEl = document.getElementById("user-input");
+
+// if (userInputEl) {
+//   (userInputEl as HTMLInputElement).value = "Hi there!";
+// }
+
+// interface ErrorContainer {
+//   [prop: string]: string;
+// }
+
+// const errorBag: ErrorContainer = {
+//   email: "Not a valid email",
+//   userName: "Must start with uppercase",
+// };
